@@ -85,6 +85,13 @@ Current implemented features:
   - `Coast Glass`
   - `Studio Slate`
 
+## Current Issues
+
+- `Gemini Live`
+  - on some phones, Gemini playback can sound louder than expected and hardware volume steps may feel coarse while Gemini is speaking
+  - this appears to be related to the current streamed Web Audio playback path
+  - it does not currently have a separate in-app output gain control
+
 ## What Stays Inside OpenClaw
 
 This plugin keeps the important control plane inside OpenClaw.
