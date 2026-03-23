@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
+import os from "node:os";
 
 type ProviderName = "openai" | "google";
 type ConversationMode = "device_local" | "shared";
@@ -88,7 +89,7 @@ export function saveConversationStore(storePath: string, store: ConversationStor
 }
 
 function resolveSessionStorePath(agentId: string) {
-  return `/home/chris/.openclaw/agents/${agentId}/sessions/sessions.json`;
+  return path.join(os.homedir(), ".openclaw", "agents", agentId, "sessions", "sessions.json");
 }
 
 function ensureLocalSessionExists(params: {
@@ -117,7 +118,7 @@ function ensureLocalSessionExists(params: {
     version: 3,
     id: sessionId,
     timestamp: nowIso,
-    cwd: "/home/chris/.openclaw/workspace",
+    cwd: path.join(os.homedir(), ".openclaw", "workspace"),
   };
 
   fs.writeFileSync(sessionFile, `${JSON.stringify(header)}\n`, "utf8");

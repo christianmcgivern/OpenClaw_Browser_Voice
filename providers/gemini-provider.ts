@@ -22,10 +22,20 @@ export async function createGeminiEphemeralToken(params: {
   const client = new GoogleGenAI({ apiKey });
   const expireTime = new Date(Date.now() + 30 * 60 * 1000).toISOString();
   const newSessionExpireTime = new Date(Date.now() + 5 * 60 * 1000).toISOString();
+  const tools = [params.deps.buildGeminiToolDefinition()];
+  const systemInstruction = params.deps.buildToolInstructions(params.api);
   const liveConfig = {
     responseModalities: ["AUDIO"],
     inputAudioTranscription: {},
     outputAudioTranscription: {},
+    ...(tools.length ? { tools } : {}),
+    ...(systemInstruction
+      ? {
+          systemInstruction: {
+            parts: [{ text: systemInstruction }],
+          },
+        }
+      : {}),
   };
 
   const token = await client.authTokens.create({
@@ -52,7 +62,7 @@ export async function createGeminiEphemeralToken(params: {
     model: params.config.geminiModel,
     token: token?.name ?? null,
     liveConfig,
-    tools: [params.deps.buildGeminiToolDefinition()],
-    systemInstruction: params.deps.buildToolInstructions(params.api),
+    tools,
+    systemInstruction,
   };
 }

@@ -132,12 +132,13 @@ type ToolPolicy = {
 
 const PLUGIN_ID = "browser-voice-gateway";
 const PLUGIN_NAME = "Browser Voice Gateway";
-const PLUGIN_ROOT = "/home/chris/.openclaw/plugins/browser-voice-gateway";
+const OPENCLAW_HOME = path.join(os.homedir(), ".openclaw");
+const PLUGIN_ROOT = path.join(OPENCLAW_HOME, "plugins", "browser-voice-gateway");
 const UI_ROOT = path.join(PLUGIN_ROOT, "ui");
-const TRUST_STORE_PATH = "/home/chris/.openclaw/browser-voice/trusted-browsers.json";
-const CONVERSATION_STORE_PATH = "/home/chris/.openclaw/browser-voice/conversations.json";
-const TLS_DIR = "/home/chris/.openclaw/browser-voice/tls";
-const BROWSER_VOICE_LOG_PATH = "/home/chris/.openclaw/logs/browser-voice-gateway.log";
+const TRUST_STORE_PATH = path.join(OPENCLAW_HOME, "browser-voice", "trusted-browsers.json");
+const CONVERSATION_STORE_PATH = path.join(OPENCLAW_HOME, "browser-voice", "conversations.json");
+const TLS_DIR = path.join(OPENCLAW_HOME, "browser-voice", "tls");
+const BROWSER_VOICE_LOG_PATH = path.join(OPENCLAW_HOME, "logs", "browser-voice-gateway.log");
 const AGENT_ID = "main";
 const COOKIE_NAME = "openclaw_browser_voice";
 const loginFailures = new Map<string, { count: number; blockedUntilMs: number }>();
@@ -659,7 +660,7 @@ function buildOpenAiToolDefinition() {
         },
         args: {
           type: "object",
-          description: "Arguments object passed directly to the selected OpenClaw tool. For file operations, prefer absolute paths such as /home/chris/Desktop/test.txt.",
+          description: "Arguments object passed directly to the selected OpenClaw tool. For file operations, prefer absolute destination paths instead of relative paths.",
           additionalProperties: true,
         },
       },
@@ -676,7 +677,7 @@ function buildOpenAiToolDefinition() {
         properties: {
           path: {
             type: "string",
-            description: "Absolute destination path, for example /home/chris/Desktop/test.txt",
+            description: "Absolute destination path, for example /absolute/path/to/test.txt",
           },
           content: {
             type: "string",
@@ -704,7 +705,7 @@ function buildGeminiToolDefinition() {
             },
             args: {
               type: "object",
-              description: "Arguments object passed directly to the selected OpenClaw tool. For file operations, prefer absolute paths such as /home/chris/Desktop/test.txt.",
+              description: "Arguments object passed directly to the selected OpenClaw tool. For file operations, prefer absolute destination paths instead of relative paths.",
               properties: {},
             },
           },
@@ -719,7 +720,7 @@ function buildGeminiToolDefinition() {
           properties: {
             path: {
               type: "string",
-              description: "Absolute destination path, for example /home/chris/Desktop/test.txt",
+              description: "Absolute destination path, for example /absolute/path/to/test.txt",
             },
             content: {
               type: "string",
@@ -775,7 +776,7 @@ function buildToolInstructions(api: PluginApi) {
     `Use ${WRITE_FILE_TOOL_NAME} when the user asks to create or overwrite a file and the destination/content are already known.`,
     `Pass the OpenClaw tool id in \`tool\` and the arguments object in \`args\`.`,
     "When calling file tools such as read, write, or edit, include absolute paths whenever the destination is known.",
-    "For this machine, prefer explicit paths like /home/chris/Desktop/<name> or /home/chris/.openclaw/workspace/<name> instead of vague relative paths.",
+    "Prefer explicit absolute paths instead of vague relative paths when the destination is known.",
     "For write, always include both `path` and `content`, even when the content should be blank.",
     `This browser session uses OpenClaw tools profile \`${manifest.policy.profile}\`.`,
     manifest.available.length
@@ -801,7 +802,7 @@ function resolveWorkspaceDir(api: PluginApi) {
   const workspace = typeof defaults.workspace === "string" && defaults.workspace.trim()
     ? defaults.workspace.trim()
     : "";
-  return workspace || "/home/chris/.openclaw/workspace";
+  return workspace || path.join(OPENCLAW_HOME, "workspace");
 }
 
 function resolveToolPath(api: PluginApi, rawPath: unknown) {
@@ -1111,7 +1112,7 @@ function ensureTrustedBrowser(req: any, config: BrowserVoiceConfig): TrustedBrow
 }
 
 function resolveSessionStorePath(agentId: string) {
-  return `/home/chris/.openclaw/agents/${agentId}/sessions/sessions.json`;
+  return path.join(OPENCLAW_HOME, "agents", agentId, "sessions", "sessions.json");
 }
 
 function ensureLocalSessionExists(params: {
@@ -1140,7 +1141,7 @@ function ensureLocalSessionExists(params: {
     version: 3,
     id: sessionId,
     timestamp: nowIso,
-    cwd: "/home/chris/.openclaw/workspace",
+    cwd: path.join(OPENCLAW_HOME, "workspace"),
   };
 
   fs.writeFileSync(sessionFile, `${JSON.stringify(header)}\n`, "utf8");
