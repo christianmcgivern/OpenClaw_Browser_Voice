@@ -2,7 +2,7 @@
   "id": "browser-voice-gateway",
   "name": "Browser Voice Gateway",
   "description": "Browser-first voice gateway for OpenClaw with OpenAI and Gemini bootstrap routes.",
-  "version": "0.1.0-dev",
+  "version": "0.1.0",
   "uiHints": {
     "enabled": {
       "label": "Enabled"

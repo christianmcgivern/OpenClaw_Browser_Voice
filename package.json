@@ -1,6 +1,6 @@
 {
   "name": "@local/browser-voice-gateway",
-  "version": "0.1.0-dev",
+  "version": "0.1.0",
   "description": "Browser voice gateway plugin for OpenClaw",
   "type": "module",
   "dependencies": {
