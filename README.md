@@ -12,6 +12,19 @@ It gives OpenClaw a dedicated HTTPS web UI for:
 
 It is designed so the user can open a web page on another device, authenticate that browser once, and use OpenClaw without exposing long-term provider API keys to the browser.
 
+## Start Here
+
+This plugin now includes a few different documents for different audiences.
+
+- [INSTALL.md](/home/chris/.openclaw/plugins/browser-voice-gateway/INSTALL.md)
+  - quick install guide for normal users
+- [README.md](/home/chris/.openclaw/plugins/browser-voice-gateway/README.md)
+  - full install, architecture, runtime flow, storage, UI, and operational notes
+- [BROWSER_VOICE_GATEWAY_AI_CONTEXT.md](/home/chris/.openclaw/plugins/browser-voice-gateway/BROWSER_VOICE_GATEWAY_AI_CONTEXT.md)
+  - AI handoff document that explains the plugin in a dense, model-friendly format
+- [BROWSER_VOICE_GATEWAY_WEB_INTEGRATION.md](/home/chris/.openclaw/plugins/browser-voice-gateway/BROWSER_VOICE_GATEWAY_WEB_INTEGRATION.md)
+  - for developers who want to keep this plugin backend but build their own web UI around it
+
 ## What This Plugin Includes
 
 Current implemented features:
@@ -584,19 +597,13 @@ If the phone/browser does not trust the certificate:
 
 The `What Is Trusted HTTPS?` button in Settings explains this in the UI.
 
-For more detail see:
+In practice:
 
-- [HTTPS_SETUP.md](/home/chris/.openclaw/plugins/browser-voice-gateway/HTTPS_SETUP.md)
-
-That file is the dedicated HTTPS/trust companion document.
-
-Use this README for installation and normal usage.
-
-Use `HTTPS_SETUP.md` when you specifically need to understand:
-
-- why the browser says `Not Secure`
-- how to trust a local certificate
-- how to think about reverse proxy / real TLS later
+- self-signed local HTTPS may still work for testing
+- untrusted HTTPS can still break microphone access or other secure browser features
+- iPhone Safari is not recommended for this plugin
+- iPhone Chrome can work, but trusted HTTPS is still strongly recommended
+- cloud-hosted OpenClaw installs have not been fully validated with this plugin yet
 
 ## Exact Runtime Flow
 

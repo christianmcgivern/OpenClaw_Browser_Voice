@@ -5,7 +5,6 @@ This is the simple version.
 If you want the full technical details, read:
 
 - [README.md](/home/chris/.openclaw/plugins/browser-voice-gateway/README.md)
-- [HTTPS_SETUP.md](/home/chris/.openclaw/plugins/browser-voice-gateway/HTTPS_SETUP.md)
 
 ## What You Need Before You Start
 
@@ -221,9 +220,18 @@ That usually means the certificate is self-signed and the phone/browser does not
 
 For quick local testing, you may still be able to continue.
 
-For the real explanation and next steps, read:
+What this means in practice:
 
-- [HTTPS_SETUP.md](/home/chris/.openclaw/plugins/browser-voice-gateway/HTTPS_SETUP.md)
+- the page may load but still say `Not Secure`
+- microphone access may fail or behave inconsistently
+- iPhone Safari is the least forgiving option
+- iPhone Chrome can still work, but it is still using WebKit under the hood
+
+For the best results:
+
+- use trusted HTTPS
+- use Chrome first for testing
+- avoid Safari on iPhone unless you specifically need to test it
 
 ## iPhone Note
 
