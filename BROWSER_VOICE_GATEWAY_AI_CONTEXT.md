@@ -19,35 +19,35 @@ Everything below is based on the current code in this plugin.
 
 Core plugin entry:
 
-- [index.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/index.ts)
+- [index.ts](index.ts)
 
 Providers:
 
-- [providers/openai-provider.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/openai-provider.ts)
-- [providers/gemini-provider.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/gemini-provider.ts)
-- [providers/gemini-live-bridge.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/gemini-live-bridge.ts)
+- [providers/openai-provider.ts](providers/openai-provider.ts)
+- [providers/gemini-provider.ts](providers/gemini-provider.ts)
+- [providers/gemini-live-bridge.ts](providers/gemini-live-bridge.ts)
 
 Routes:
 
-- [routes/static-routes.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/routes/static-routes.ts)
-- [routes/provider-routes.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/routes/provider-routes.ts)
-- [routes/session-routes.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/routes/session-routes.ts)
-- [routes/conversation-routes.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/routes/conversation-routes.ts)
-- [routes/chat-routes.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/routes/chat-routes.ts)
-- [routes/diagnostic-routes.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/routes/diagnostic-routes.ts)
+- [routes/static-routes.ts](routes/static-routes.ts)
+- [routes/provider-routes.ts](routes/provider-routes.ts)
+- [routes/session-routes.ts](routes/session-routes.ts)
+- [routes/conversation-routes.ts](routes/conversation-routes.ts)
+- [routes/chat-routes.ts](routes/chat-routes.ts)
+- [routes/diagnostic-routes.ts](routes/diagnostic-routes.ts)
 
 Conversation storage:
 
-- [store/conversation-store.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/store/conversation-store.ts)
+- [store/conversation-store.ts](store/conversation-store.ts)
 
 Browser UI:
 
-- [ui/index.html](/home/chris/.openclaw/plugins/browser-voice-gateway/ui/index.html)
-- [ui/app.js](/home/chris/.openclaw/plugins/browser-voice-gateway/ui/app.js)
-- [ui/chat.html](/home/chris/.openclaw/plugins/browser-voice-gateway/ui/chat.html)
-- [ui/chat.js](/home/chris/.openclaw/plugins/browser-voice-gateway/ui/chat.js)
-- [ui/gemini-live.js](/home/chris/.openclaw/plugins/browser-voice-gateway/ui/gemini-live.js)
-- [ui/style.css](/home/chris/.openclaw/plugins/browser-voice-gateway/ui/style.css)
+- [ui/index.html](ui/index.html)
+- [ui/app.js](ui/app.js)
+- [ui/chat.html](ui/chat.html)
+- [ui/chat.js](ui/chat.js)
+- [ui/gemini-live.js](ui/gemini-live.js)
+- [ui/style.css](ui/style.css)
 
 ## Provider Modes
 
@@ -90,7 +90,7 @@ Browser trust:
 
 Trusted browser storage:
 
-- `/home/chris/.openclaw/browser-voice/trusted-browsers.json`
+- `~/.openclaw/browser-voice/trusted-browsers.json`
 
 Browser session lifetime:
 
@@ -107,7 +107,7 @@ Required providers:
 
 Key resolution:
 
-- `resolveProviderApiKey(...)` in [index.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/index.ts)
+- `resolveProviderApiKey(...)` in [index.ts](index.ts)
 - uses OpenClaw runtime model auth
 
 OpenAI Realtime bootstrap:
@@ -115,7 +115,7 @@ OpenAI Realtime bootstrap:
 - endpoint:
   - `POST /browser-voice/api/bootstrap/openai`
 - implementation:
-  - `createOpenAiClientSecret(...)` in [providers/openai-provider.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/openai-provider.ts)
+  - `createOpenAiClientSecret(...)` in [providers/openai-provider.ts](providers/openai-provider.ts)
 - provider call:
   - `POST https://api.openai.com/v1/realtime/client_secrets`
 - browser receives:
@@ -126,7 +126,7 @@ Gemini bootstrap:
 - endpoint:
   - `POST /browser-voice/api/bootstrap/gemini`
 - implementation:
-  - `createGeminiEphemeralToken(...)` in [providers/gemini-provider.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/gemini-provider.ts)
+  - `createGeminiEphemeralToken(...)` in [providers/gemini-provider.ts](providers/gemini-provider.ts)
 - provider-side SDK usage:
   - `@google/genai`
 - browser/plugin receives:
@@ -136,11 +136,11 @@ Gemini runtime note:
 
 - the Google SDK is used server-side for token minting
 - the live runtime path is not the browser SDK
-- Gemini live runtime uses the plugin-side bridge in [providers/gemini-live-bridge.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/gemini-live-bridge.ts)
+- Gemini live runtime uses the plugin-side bridge in [providers/gemini-live-bridge.ts](providers/gemini-live-bridge.ts)
 
 ## Static Pages
 
-Served by [routes/static-routes.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/routes/static-routes.ts):
+Served by [routes/static-routes.ts](routes/static-routes.ts):
 
 - `GET /browser-voice/`
 - `GET /browser-voice/index.html`
@@ -200,7 +200,7 @@ Gemini bridge socket:
 
 Conversation metadata lives in:
 
-- `/home/chris/.openclaw/browser-voice/conversations.json`
+- `~/.openclaw/browser-voice/conversations.json`
 
 Each conversation tracks:
 
@@ -223,7 +223,7 @@ Per-conversation OpenClaw session key:
 
 Full transcript storage:
 
-- `/home/chris/.openclaw/agents/main/sessions/`
+- `~/.openclaw/agents/main/sessions/`
 
 Trusted browser state and conversation metadata are separate.
 
@@ -284,8 +284,8 @@ Summary output:
 
 Current summary implementation:
 
-- `summarizeConversationForHistory(...)` in [index.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/index.ts)
-- `summarizeOpenAiConversation(...)` in [providers/openai-provider.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/openai-provider.ts)
+- `summarizeConversationForHistory(...)` in [index.ts](index.ts)
+- `summarizeOpenAiConversation(...)` in [providers/openai-provider.ts](providers/openai-provider.ts)
 
 Current limitation:
 
@@ -303,7 +303,7 @@ Current limitation:
 8. plugin persists transcript into OpenClaw session history
 9. session end triggers summary generation
 
-OpenAI live provider config is built in [providers/openai-provider.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/openai-provider.ts):
+OpenAI live provider config is built in [providers/openai-provider.ts](providers/openai-provider.ts):
 
 - model from plugin config
 - output audio only
@@ -360,11 +360,11 @@ Runtime flow:
 
 Browser implementation:
 
-- [ui/gemini-live.js](/home/chris/.openclaw/plugins/browser-voice-gateway/ui/gemini-live.js)
+- [ui/gemini-live.js](ui/gemini-live.js)
 
 Bridge implementation:
 
-- [providers/gemini-live-bridge.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/gemini-live-bridge.ts)
+- [providers/gemini-live-bridge.ts](providers/gemini-live-bridge.ts)
 
 ## Text Chat Flow
 
@@ -508,12 +508,15 @@ Sanitized backend log access:
 - iPhone silent mode can affect audible playback for `OpenAI Whisper`
 - cloud-hosted OpenClaw deployments were not fully validated during this build
 
-## Current Machine-Specific Reality
+## Runtime Path Assumptions
 
-There are still machine-specific path assumptions in the current code, mainly in [index.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/index.ts), for:
+The plugin expects a standard OpenClaw home layout under `~/.openclaw/`.
 
-- plugin root
-- `.openclaw` storage paths
-- workspace fallback paths
+The important runtime paths are:
 
-That is relevant for portability work, but it does not change the current runtime behavior described above.
+- trusted browsers:
+  - `~/.openclaw/browser-voice/trusted-browsers.json`
+- conversation metadata:
+  - `~/.openclaw/browser-voice/conversations.json`
+- transcript sessions:
+  - `~/.openclaw/agents/main/sessions/`

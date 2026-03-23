@@ -2,7 +2,7 @@
 
 This project is licensed for noncommercial use under the terms in:
 
-- [LICENSE](/home/chris/.openclaw/plugins/browser-voice-gateway/LICENSE)
+- [LICENSE](LICENSE)
 
 If you want to use this project commercially, you need a separate commercial license from the copyright holder.
 

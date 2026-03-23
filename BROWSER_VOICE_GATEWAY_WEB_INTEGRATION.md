@@ -311,11 +311,11 @@ Current limitation:
 The plugin already stores:
 
 - trusted browsers:
-  - `/home/chris/.openclaw/browser-voice/trusted-browsers.json`
+  - `~/.openclaw/browser-voice/trusted-browsers.json`
 - conversation metadata:
-  - `/home/chris/.openclaw/browser-voice/conversations.json`
+  - `~/.openclaw/browser-voice/conversations.json`
 - OpenClaw session transcript history:
-  - `/home/chris/.openclaw/agents/main/sessions/`
+  - `~/.openclaw/agents/main/sessions/`
 
 So if you build your own frontend, you can still use the existing plugin state layer.
 
@@ -323,10 +323,10 @@ So if you build your own frontend, you can still use the existing plugin state l
 
 Useful browser behavior to copy from the shipped UI:
 
-- provider selection logic in [ui/app.js](/home/chris/.openclaw/plugins/browser-voice-gateway/ui/app.js)
-- Whisper session behavior in [ui/app.js](/home/chris/.openclaw/plugins/browser-voice-gateway/ui/app.js)
-- Gemini bridge browser client in [ui/gemini-live.js](/home/chris/.openclaw/plugins/browser-voice-gateway/ui/gemini-live.js)
-- chat page message flow in [ui/chat.js](/home/chris/.openclaw/plugins/browser-voice-gateway/ui/chat.js)
+- provider selection logic in [ui/app.js](ui/app.js)
+- Whisper session behavior in [ui/app.js](ui/app.js)
+- Gemini bridge browser client in [ui/gemini-live.js](ui/gemini-live.js)
+- chat page message flow in [ui/chat.js](ui/chat.js)
 
 If your team wants only the backend/service behavior, these UI files are the first extraction reference.
 

@@ -4,7 +4,7 @@ This is the simple version.
 
 If you want the full technical details, read:
 
-- [README.md](/home/chris/.openclaw/plugins/browser-voice-gateway/README.md)
+- [README.md](README.md)
 
 ## What You Need Before You Start
 

@@ -42,13 +42,13 @@ Voice home, Studio Slate theme:
 
 This plugin now includes a few different documents for different audiences.
 
-- [INSTALL.md](/home/chris/.openclaw/plugins/browser-voice-gateway/INSTALL.md)
+- [INSTALL.md](INSTALL.md)
   - quick install guide for normal users
-- [README.md](/home/chris/.openclaw/plugins/browser-voice-gateway/README.md)
+- [README.md](README.md)
   - full install, architecture, runtime flow, storage, UI, and operational notes
-- [BROWSER_VOICE_GATEWAY_AI_CONTEXT.md](/home/chris/.openclaw/plugins/browser-voice-gateway/BROWSER_VOICE_GATEWAY_AI_CONTEXT.md)
+- [BROWSER_VOICE_GATEWAY_AI_CONTEXT.md](BROWSER_VOICE_GATEWAY_AI_CONTEXT.md)
   - AI handoff document that explains the plugin in a dense, model-friendly format
-- [BROWSER_VOICE_GATEWAY_WEB_INTEGRATION.md](/home/chris/.openclaw/plugins/browser-voice-gateway/BROWSER_VOICE_GATEWAY_WEB_INTEGRATION.md)
+- [BROWSER_VOICE_GATEWAY_WEB_INTEGRATION.md](BROWSER_VOICE_GATEWAY_WEB_INTEGRATION.md)
   - for developers who want to keep this plugin backend but build their own web UI around it
 
 ## What This Plugin Includes
@@ -126,8 +126,8 @@ For `OpenAI Realtime`, the plugin does this:
 
 This is implemented in:
 
-- [provider-routes.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/routes/provider-routes.ts)
-- [openai-provider.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/openai-provider.ts)
+- [provider-routes.ts](routes/provider-routes.ts)
+- [openai-provider.ts](providers/openai-provider.ts)
 
 ### Gemini
 
@@ -140,9 +140,9 @@ For `Gemini Live`, the plugin does this:
 
 This is implemented in:
 
-- [provider-routes.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/routes/provider-routes.ts)
-- [gemini-provider.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/gemini-provider.ts)
-- [gemini-live-bridge.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/gemini-live-bridge.ts)
+- [provider-routes.ts](routes/provider-routes.ts)
+- [gemini-provider.ts](providers/gemini-provider.ts)
+- [gemini-live-bridge.ts](providers/gemini-live-bridge.ts)
 
 ### Why Ephemeral Credentials Are Used
 
@@ -168,9 +168,9 @@ The plugin does use Google SDK code, but only on the server side for ephemeral t
 
 What is true today:
 
-- the plugin uses the Google server-side SDK inside [gemini-provider.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/gemini-provider.ts) to create the ephemeral token
+- the plugin uses the Google server-side SDK inside [gemini-provider.ts](providers/gemini-provider.ts) to create the ephemeral token
 - the plugin does **not** use the Gemini browser SDK as the active live runtime path
-- the active live runtime path is the plugin-side WebSocket bridge in [gemini-live-bridge.ts](/home/chris/.openclaw/plugins/browser-voice-gateway/providers/gemini-live-bridge.ts)
+- the active live runtime path is the plugin-side WebSocket bridge in [gemini-live-bridge.ts](providers/gemini-live-bridge.ts)
 
 Why the browser SDK is not the live runtime path here:
 
@@ -308,7 +308,7 @@ For the current text-chat, Whisper reasoning, and summary path, the OpenClaw def
 
 File:
 
-- [openclaw.json](/home/chris/.openclaw/openclaw.json)
+- `~/.openclaw/openclaw.json`
 
 You need to update:
 
@@ -554,7 +554,7 @@ Then open:
 
 Example:
 
-- `https://192.168.1.229:19443/browser-voice/`
+- `https://<your-host-or-ip>:19443/browser-voice/`
 
 ## HTTPS And Mobile Trust
 
@@ -644,7 +644,7 @@ This section is the actual plugin flow, not a hand-wavy overview.
 4. Plugin creates a trusted browser record.
 5. Plugin sets an `HttpOnly` cookie.
 6. Trusted browser data is stored at:
-   - `/home/chris/.openclaw/browser-voice/trusted-browsers.json`
+   - `~/.openclaw/browser-voice/trusted-browsers.json`
 
 After that, the same browser usually does not need the code again until the cookie expires or is cleared.
 
@@ -707,7 +707,7 @@ There are three important storage layers.
 
 Stored at:
 
-- `/home/chris/.openclaw/browser-voice/trusted-browsers.json`
+- `~/.openclaw/browser-voice/trusted-browsers.json`
 
 This tracks:
 
@@ -720,7 +720,7 @@ This tracks:
 
 Stored at:
 
-- `/home/chris/.openclaw/browser-voice/conversations.json`
+- `~/.openclaw/browser-voice/conversations.json`
 
 This tracks:
 
@@ -738,7 +738,7 @@ This tracks:
 
 Stored in OpenClaw session files under:
 
-- `/home/chris/.openclaw/agents/main/sessions/`
+- `~/.openclaw/agents/main/sessions/`
 
 The plugin mirrors transcript entries into the same OpenClaw session-style storage used by the rest of the system.
 
@@ -981,8 +981,8 @@ This project is intended to be source-available for personal and noncommercial u
 
 Repository files:
 
-- [LICENSE](/home/chris/.openclaw/plugins/browser-voice-gateway/LICENSE)
-- [COMMERCIAL_LICENSE.md](/home/chris/.openclaw/plugins/browser-voice-gateway/COMMERCIAL_LICENSE.md)
+- [LICENSE](LICENSE)
+- [COMMERCIAL_LICENSE.md](COMMERCIAL_LICENSE.md)
 
 Practical summary:
 
