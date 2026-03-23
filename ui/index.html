@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenClaw Browser Voice</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <button id="setup-toggle" class="settings-button" type="button" aria-label="Open setup">
+        <span aria-hidden="true">⚙</span>
+      </button>
+
+      <section class="voice-card">
+        <div class="brand-lockup">
+          <p class="eyebrow">OpenClaw Browser Voice</p>
+        </div>
+
+        <div id="voice-bar" class="voice-bar">
+          <button id="whisper-end-button" class="voice-side-button" type="button" hidden aria-label="End Whisper session">
+            End
+          </button>
+          <div class="voice-indicator">
+            <div id="wave-container" class="wave-container" aria-hidden="true">
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+              <span class="wave-bar"></span>
+            </div>
+
+            <div class="voice-copy">
+              <div id="status-text" class="status-text">Ready</div>
+              <div id="sub-status" class="sub-status">Authenticate this browser to begin.</div>
+            </div>
+          </div>
+
+          <button id="voice-button" class="voice-button" type="button" aria-label="Start voice session">
+            <span class="voice-button-icon">●</span>
+          </button>
+        </div>
+
+        <div id="whisper-tools" class="whisper-tools" hidden>
+          <button id="whisper-replay-button" class="pill pill-muted" type="button">Play Last Reply</button>
+        </div>
+
+        <div class="provider-strip provider-strip-main">
+          <span class="provider-strip-label">Voice Mode</span>
+          <select id="provider-inline" class="provider-select" aria-label="Select voice provider">
+            <option value="openai">OpenAI Realtime</option>
+            <option value="openai_stt_tts">OpenAI Whisper</option>
+            <option value="google">Gemini Live</option>
+          </select>
+        </div>
+
+        <div class="toolbar">
+          <a class="pill pill-muted" href="./chat">Chat</a>
+          <button id="continue-button" class="pill pill-muted" type="button">Latest</button>
+          <button id="new-chat-button" class="pill pill-muted" type="button">New</button>
+          <button id="history-button" class="pill pill-muted" type="button">Browse History</button>
+        </div>
+
+        <div class="toolbar-help">
+          <span>Latest loads this device's most recent conversation.</span>
+          <span>Browse History lets you pick any saved conversation.</span>
+        </div>
+
+        <div id="response-shell" class="response-shell" hidden>
+          <div class="response-title">Live Response</div>
+          <div id="response-text" class="response-text"></div>
+        </div>
+      </section>
+
+      <section id="history-shell" class="history-shell" hidden>
+        <div class="history-header">
+          <div class="history-header-copy">
+            <div class="history-title">Conversation History</div>
+            <div id="history-summary" class="history-summary">No conversation selected.</div>
+          </div>
+          <button id="history-summarize-button" class="pill pill-muted" type="button">Summarize Selected</button>
+        </div>
+
+        <div class="history-search-row">
+          <input id="history-search" type="search" placeholder="Search past conversations" />
+          <button id="history-search-button" class="pill pill-muted" type="button">Search</button>
+        </div>
+
+        <div class="history-groups">
+          <div class="history-group">
+            <div class="history-group-title">This Device</div>
+            <div id="history-current-device" class="history-list"></div>
+          </div>
+
+          <div class="history-group">
+            <div class="history-group-title">Other Devices</div>
+            <div id="history-other-devices" class="history-list"></div>
+          </div>
+
+          <div class="history-group">
+            <div class="history-group-title">Shared</div>
+            <div id="history-shared" class="history-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="setup-panel" class="setup-panel" hidden>
+        <div class="drawer-intro">
+          <div class="history-title">Controls</div>
+          <div class="drawer-copy">The main screen is for talking, loading the latest conversation, and browsing history. Browser trust and diagnostics live here.</div>
+        </div>
+
+        <div class="drawer-group">
+          <div class="drawer-group-head">
+            <div class="history-group-title">Connection</div>
+            <div class="drawer-copy">Authenticate this browser and understand what trusted HTTPS means for phone microphone access.</div>
+          </div>
+          <div class="setup-actions">
+            <button id="auth-button" class="pill" type="button">Authenticate</button>
+            <button id="trust-button" class="pill pill-muted" type="button">What Is Trusted HTTPS?</button>
+          </div>
+          <div class="drawer-note">
+            Trusted HTTPS means the phone accepts this site's certificate as secure. iPhone browsers often need that before microphone and audio behavior work cleanly.
+          </div>
+        </div>
+
+        <div class="setup-grid">
+          <label>
+            <span>Access Code</span>
+            <input id="access-code" type="password" placeholder="Enter browser access code" />
+          </label>
+
+          <label class="full">
+            <span>Instructions</span>
+            <textarea id="instructions" rows="4">You are OpenClaw voice. Be concise, capable, and natural.</textarea>
+          </label>
+        </div>
+
+        <div class="drawer-group">
+          <div class="drawer-group-head">
+            <div class="history-group-title">Diagnostics</div>
+            <div class="drawer-copy">Inspect status, open the separate tool trace page, and test provider bootstrap behavior.</div>
+          </div>
+          <div class="setup-actions">
+            <button id="refresh-status" class="pill pill-muted" type="button">Refresh Status</button>
+            <button id="gemini-token" class="pill pill-muted" type="button">Test Gemini Token</button>
+            <a class="pill pill-muted" href="./trace" target="_blank" rel="noreferrer">Open Tool Trace</a>
+            <a class="pill pill-muted" href="./session-log" target="_blank" rel="noreferrer">Open Session Log</a>
+            <button id="clear-log" class="pill pill-muted" type="button">Clear Log</button>
+          </div>
+        </div>
+
+        <div class="drawer-group">
+          <div class="drawer-group-head">
+            <div class="history-group-title">Display</div>
+            <div class="drawer-copy">Choose the visual theme and control whether the floating Logs button is visible on the main voice page.</div>
+          </div>
+          <div class="setup-grid compact-grid">
+            <label>
+              <span>Theme</span>
+              <select id="theme-select">
+                <option value="coast">Coast Glass</option>
+                <option value="studio">Studio Slate</option>
+              </select>
+            </label>
+          </div>
+          <div class="setup-actions">
+            <button id="log-visibility-toggle" class="pill pill-muted" type="button">Log Display: On</button>
+          </div>
+        </div>
+
+        <div class="drawer-group">
+          <div class="drawer-group-head">
+            <div class="history-group-title">Session</div>
+            <div class="drawer-copy">Use only when you want to explicitly reset browser auth for this device.</div>
+          </div>
+          <div class="setup-actions">
+            <button id="logout" class="pill pill-muted" type="button">Logout</button>
+          </div>
+        </div>
+      </section>
+
+      <audio id="remote-audio" autoplay></audio>
+
+      <button id="debug-toggle" class="debug-toggle" type="button" aria-label="Open debug drawer">Logs</button>
+
+      <section id="debug-drawer" class="debug-drawer" hidden>
+        <div class="debug-drawer-head">
+          <div class="history-title">Debug</div>
+          <div class="debug-actions">
+            <button id="debug-refresh" class="pill pill-muted" type="button">Refresh</button>
+            <button id="debug-clear" class="pill pill-muted" type="button">Clear</button>
+            <button id="debug-close" class="pill pill-muted" type="button">Close</button>
+          </div>
+        </div>
+        <pre id="debug-log" class="debug-log">No debug entries yet.</pre>
+      </section>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

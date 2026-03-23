@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenClaw Browser Chat</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <a class="settings-button" href="./" aria-label="Back to voice">
+        <span aria-hidden="true">←</span>
+      </a>
+
+      <section class="voice-card chat-card">
+        <div class="brand-lockup">
+          <p class="eyebrow">OpenClaw Browser Chat</p>
+        </div>
+
+        <div class="chat-actions">
+          <button id="chat-continue" class="pill pill-muted" type="button">Latest</button>
+          <button id="chat-new" class="pill pill-muted" type="button">New</button>
+          <button id="chat-history" class="pill pill-muted" type="button">Browse History</button>
+        </div>
+
+        <div class="toolbar-help">
+          <span>Chat always uses your OpenClaw default model.</span>
+          <span>Latest loads this device's most recent conversation.</span>
+        </div>
+
+        <div id="chat-thread" class="chat-thread" aria-live="polite"></div>
+
+        <div class="chat-composer">
+          <textarea id="chat-input" rows="3" placeholder="Type a message."></textarea>
+          <div class="chat-composer-actions">
+            <button id="chat-send" class="pill" type="button">Send</button>
+          </div>
+        </div>
+
+        <div id="chat-status" class="sub-status">Authenticate on the main voice page first if needed.</div>
+      </section>
+
+      <section id="chat-history-shell" class="history-shell" hidden>
+        <div class="history-header">
+          <div class="history-title">Conversation History</div>
+          <div id="chat-history-summary" class="history-summary">No conversation selected.</div>
+        </div>
+
+        <div class="history-search-row">
+          <input id="chat-history-search" type="search" placeholder="Search past conversations" />
+          <button id="chat-history-search-button" class="pill pill-muted" type="button">Search</button>
+        </div>
+
+        <div class="history-groups">
+          <div class="history-group">
+            <div class="history-group-title">This Device</div>
+            <div id="chat-history-current-device" class="history-list"></div>
+          </div>
+
+          <div class="history-group">
+            <div class="history-group-title">Other Devices</div>
+            <div id="chat-history-other-devices" class="history-list"></div>
+          </div>
+
+          <div class="history-group">
+            <div class="history-group-title">Shared</div>
+            <div id="chat-history-shared" class="history-list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./chat.js"></script>
+  </body>
+</html>

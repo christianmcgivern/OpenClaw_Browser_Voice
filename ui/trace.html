@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenClaw Tool Trace</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="trace-page">
+      <section class="trace-hero">
+        <p class="eyebrow">OpenClaw Browser Voice</p>
+        <h1 class="trace-title">Tool Trace</h1>
+        <p class="trace-subtitle">Last tool calls, shown as a simple flow map. Green means complete. Red means failed. Amber means fallback or caution.</p>
+        <div class="trace-actions">
+          <a class="pill" href="./">Back To Voice</a>
+          <button id="trace-refresh" class="pill pill-muted" type="button">Refresh</button>
+        </div>
+      </section>
+
+      <section class="trace-legend">
+        <div class="trace-legend-item"><span class="trace-dot trace-dot-success"></span> success</div>
+        <div class="trace-legend-item"><span class="trace-dot trace-dot-error"></span> failure</div>
+        <div class="trace-legend-item"><span class="trace-dot trace-dot-warn"></span> fallback / warning</div>
+      </section>
+
+      <section id="trace-cards" class="trace-cards">
+        <article class="trace-card">
+          <div class="trace-card-title">Loading trace…</div>
+        </article>
+      </section>
+    </main>
+    <script type="module" src="./trace.js"></script>
+  </body>
+</html>

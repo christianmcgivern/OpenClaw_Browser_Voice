@@ -1,0 +1,121 @@
+{
+  "id": "browser-voice-gateway",
+  "name": "Browser Voice Gateway",
+  "description": "Browser-first voice gateway for OpenClaw with OpenAI and Gemini bootstrap routes.",
+  "version": "0.1.0-dev",
+  "uiHints": {
+    "enabled": {
+      "label": "Enabled"
+    },
+    "routeBase": {
+      "label": "Route Base"
+    },
+    "browserAccessCode": {
+      "label": "Browser Access Code",
+      "sensitive": true
+    },
+    "browserSessionTtlHours": {
+      "label": "Browser Session TTL Hours"
+    },
+    "defaultProvider": {
+      "label": "Default Provider"
+    },
+    "openaiModel": {
+      "label": "OpenAI Realtime Model"
+    },
+    "openaiVoice": {
+      "label": "OpenAI Voice"
+    },
+    "geminiModel": {
+      "label": "Gemini Live Model"
+    },
+    "sessionKey": {
+      "label": "Transcript Session Key"
+    },
+    "serve.enabled": {
+      "label": "HTTPS Server Enabled"
+    },
+    "serve.bind": {
+      "label": "HTTPS Bind"
+    },
+    "serve.port": {
+      "label": "HTTPS Port"
+    },
+    "serve.publicHost": {
+      "label": "Public Host"
+    },
+    "serve.certPath": {
+      "label": "TLS Cert Path"
+    },
+    "serve.keyPath": {
+      "label": "TLS Key Path"
+    },
+    "serve.autoSelfSigned": {
+      "label": "Auto Self-Signed Cert"
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "enabled": {
+        "type": "boolean"
+      },
+      "routeBase": {
+        "type": "string"
+      },
+      "browserAccessCode": {
+        "type": "string"
+      },
+      "browserSessionTtlHours": {
+        "type": "number"
+      },
+      "defaultProvider": {
+        "type": "string",
+        "enum": [
+          "openai",
+          "google"
+        ]
+      },
+      "openaiModel": {
+        "type": "string"
+      },
+      "openaiVoice": {
+        "type": "string"
+      },
+      "geminiModel": {
+        "type": "string"
+      },
+      "sessionKey": {
+        "type": "string"
+      },
+      "serve": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "bind": {
+            "type": "string"
+          },
+          "port": {
+            "type": "number"
+          },
+          "publicHost": {
+            "type": "string"
+          },
+          "certPath": {
+            "type": "string"
+          },
+          "keyPath": {
+            "type": "string"
+          },
+          "autoSelfSigned": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

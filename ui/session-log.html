@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenClaw Session Log</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="trace-page">
+      <section class="trace-hero">
+        <p class="eyebrow">OpenClaw Browser Voice</p>
+        <h1 class="trace-title">Session Log</h1>
+        <p class="trace-subtitle">Browser-visible session events for this page. Use this for lightweight client/session inspection without mixing it into the main voice view.</p>
+        <div class="trace-actions">
+          <a class="pill" href="./">Back To Voice</a>
+          <button id="session-log-clear" class="pill pill-muted" type="button">Clear</button>
+        </div>
+      </section>
+
+      <section class="log-shell">
+        <div class="log-title">Session Log</div>
+        <pre id="log" class="log">Waiting for status…</pre>
+      </section>
+    </main>
+    <script type="module" src="./session-log.js"></script>
+  </body>
+</html>

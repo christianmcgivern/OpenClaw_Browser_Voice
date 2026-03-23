@@ -1,0 +1,15 @@
+{
+  "name": "@local/browser-voice-gateway",
+  "version": "0.1.0-dev",
+  "description": "Browser voice gateway plugin for OpenClaw",
+  "type": "module",
+  "dependencies": {
+    "@google/genai": "^1.43.0",
+    "ws": "^8.18.3"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}
