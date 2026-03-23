@@ -12,6 +12,32 @@ It gives OpenClaw a dedicated HTTPS web UI for:
 
 It is designed so the user can open a web page on another device, authenticate that browser once, and use OpenClaw without exposing long-term provider API keys to the browser.
 
+## Screenshots
+
+Voice home, Coast Glass theme:
+
+![Voice home, Coast Glass](docs/images/voice-home-ready-coast-glass.png)
+
+OpenAI Realtime live response:
+
+![OpenAI Realtime live response](docs/images/voice-openai-realtime-live-response.png)
+
+Voice mode selector:
+
+![Voice mode selector](docs/images/voice-provider-selector.png)
+
+Conversation history:
+
+![Conversation history](docs/images/voice-history-panel.png)
+
+Settings drawer:
+
+![Settings drawer](docs/images/settings-connection-panel.png)
+
+Voice home, Studio Slate theme:
+
+![Voice home, Studio Slate](docs/images/voice-home-studio-slate.png)
+
 ## Start Here
 
 This plugin now includes a few different documents for different audiences.
